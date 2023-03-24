@@ -7,6 +7,8 @@ import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import MainAside from "./components/Aside/MainAside";
 import {reset} from "./styles/Global/reset";
 import {Global} from "@emotion/react";
+import Sample from "./pages/InputSample/Sample";
+import UserList from "./pages/UserList/UserList";
 
 function Test1() {
     return (<h1>test1</h1>);
@@ -25,8 +27,10 @@ function App() {
           <Routes>
             <Route path={"/t1"} Component={Test1}></Route>
             <Route path={"/t2"} Component={Test2}></Route>
-            <Route path={"/sample/input/1"} Component={InputSample}></Route>
+              <Route path={"/sample/input"} Component={Sample}></Route>
+              <Route path={"/sample/input/1"} Component={InputSample}></Route>
             <Route path={"/sample/input/2"} Component={InputSample2}></Route>
+            <Route path={"/users"} Component={UserList}></Route>
           </Routes>
       </>
   );
