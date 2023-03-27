@@ -4,6 +4,7 @@ import {css} from "@emotion/react";
 import {FcPlus} from "@react-icons/all-files/fc/FcPlus";
 import {FcEmptyTrash} from "@react-icons/all-files/fc/FcEmptyTrash";
 import {FcEditImage} from "@react-icons/all-files/fc/FcEditImage";
+import {FcCheckmark} from "@react-icons/all-files/fc/FcCheckmark";
 
 const TodoContainer = css`
   
@@ -110,7 +111,8 @@ const Todo = () => {
 
     const [input, setInput] = useState({
         id: 0,
-        content: ''
+        content: '',
+        modifyFlag: false
     });
 
 
@@ -148,6 +150,42 @@ const Todo = () => {
         setTodoList(todoList.filter(todo => todo.id!== index));
     }
 
+    const onEdit = (index) => {
+        setTodoList(todoList.map(todo => {
+            if (todo.id === index) {
+                const copy = {
+                    ...todo
+                }
+                setTodoList(copy)
+                todo.modifyFlag = true;
+
+            }else {
+                todo.modifyFlag = false;
+            }
+            return todo;
+        }));
+    }
+
+    const onSave = (index) => {
+        setTodoList(todoList.map(todo => {
+            if (todo.id === index) {
+                todo.modifyFlag = true;
+                return {
+                  ...input,
+                    id: todo.id
+                }
+            }
+            return todo;
+        }));
+        setInput(
+            {
+                id: 0,
+                content: '',
+                modifyFlag: false
+            }
+        )
+    }
+
     return (
         <div css={TodoContainer}>
             <div css={TodoAddition}>
@@ -158,9 +196,14 @@ const Todo = () => {
                 todoList.map(todo => {
                     return (
                             <div css={TodoList} key={todo.id}>
-                                <div css={TodoContent}>{todo.content}</div>
+                                <div css={TodoContent}>{todo.modifyFlag ? (<input css={AdditionInput} type={"text"} placeholder={"Add your new Todo"} onChange={onChange} onKeyUp={onKeyUp} defaultValue={input.content}/>) :todo.content}</div>
                                 <div css={ItemGroup}>
-                                    <button css={ItemButton}><FcEditImage/></button>
+                                    {
+                                        todo.modifyFlag
+                                            ?  <button css={ItemButton} onClick={() => onSave(todo.id)}><FcCheckmark/></button>
+                                            : <button css={ItemButton} onClick={() => onEdit(todo.id)}><FcEditImage/></button>
+                                    }
+
                                     <button css={ItemButton} onClick={() => onRemove(todo.id)}><FcEmptyTrash/></button>
                                 </div>
                             </div>
