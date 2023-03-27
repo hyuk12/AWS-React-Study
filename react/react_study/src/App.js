@@ -9,6 +9,8 @@ import {reset} from "./styles/Global/reset";
 import {Global} from "@emotion/react";
 import Sample from "./pages/InputSample/Sample";
 import UserList from "./pages/UserList/UserList";
+import TodoList from "./pages/TodoList/TodoList";
+import Todo from "./pages/Todo/Todo";
 
 function Test1() {
     return (<h1>test1</h1>);
@@ -31,6 +33,9 @@ function App() {
               <Route path={"/sample/input/1"} Component={InputSample}></Route>
             <Route path={"/sample/input/2"} Component={InputSample2}></Route>
             <Route path={"/users"} Component={UserList}></Route>
+              <Route path={"/todo"} Component={TodoList}></Route>
+              <Route path={"/todo2"} Component={Todo}></Route>
+
           </Routes>
       </>
   );

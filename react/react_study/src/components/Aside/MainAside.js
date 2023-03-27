@@ -9,6 +9,7 @@ import {FcList} from "@react-icons/all-files/fc/FcList";
 import {FcIdea} from "@react-icons/all-files/fc/FcIdea";
 import {useNavigate} from "react-router-dom";
 import {FcSearch} from "@react-icons/all-files/fc/FcSearch";
+import {FcTodoList} from "@react-icons/all-files/fc/FcTodoList";
 const MainAside = () => {
     const navigate = useNavigate();
     return (
@@ -63,6 +64,24 @@ const MainAside = () => {
                                 title: '사용자 전체 조회',
                                 itemId: '/users',
                                 elemBefore: () => <FcSearch />
+                            }
+                        ]
+                    },
+
+                    {
+                        title: 'todoList',
+                        itemId: '/todoList/home',
+                        elemBefore: () => <FcTodoList />,
+                        subNav :[
+                            {
+                                title: 'todoList',
+                                itemId: '/todo',
+                                elemBefore: () => <FcTodoList />
+                            },
+                            {
+                                title: 'todoList2',
+                                itemId: '/todo2',
+                                elemBefore: () => <FcTodoList />
                             }
                         ]
                     }
