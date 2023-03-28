@@ -7,8 +7,23 @@ export const style = css`
   
   width: 300px;
   height: 100%;
+  background-color: bisque;
   box-shadow: 1px 0 5px 1px black;
   transition: left 1s ease;
+`;
+
+export const HiddenMenu = css`
+  position: absolute;
+  top: 0;
+  left: -300px;
+  z-index: 99;
+
+  width: 300px;
+  height: 100%;
+  background-color: bisque;
+  box-shadow: 1px 0 5px 1px black;
+  transition: left 1s ease;
+
 `;
 
 export const MenuButton = css`
@@ -35,8 +50,4 @@ export const MenuButton = css`
     background-color: #454545;
     text-shadow: 0 0 5px #f0e5d3;
   }
-`;
-
-export const HiddenMenu = css`
-    left: -300px;
 `;
