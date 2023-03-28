@@ -1,10 +1,10 @@
 import React from 'react';
-import Nav from "./Nav";
+import Nav2 from "./Nav2";
 
 const Home = () => {
     return (
         <div className={"font-sans"}>
-
+          <Nav2/>
         </div>
     );
 }

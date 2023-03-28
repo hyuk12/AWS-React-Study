@@ -3,17 +3,17 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'Main', href: '#', current: false },
+    { name: 'Product', href: '#', current: false },
+    { name: 'HotSale', href: '#', current: false },
+    { name: 'ACC', href: '#', current: false },
 ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+const Nav = () => {
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (
@@ -78,7 +78,7 @@ export default function Example() {
                                             <span className="sr-only">Open user menu</span>
                                             <img
                                                 className="h-8 w-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                src={""}
                                                 alt=""
                                             />
                                         </Menu.Button>
@@ -153,3 +153,5 @@ export default function Example() {
         </Disclosure>
     )
 }
+
+export default Nav

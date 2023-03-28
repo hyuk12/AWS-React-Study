@@ -1,13 +1,12 @@
 import './App.css';
-import Nav from "./pages/Home/Nav";
 import React from "react";
+import Home from "./pages/Home/Home";
 
 
 function App() {
   return (
       <div className={"w-full h-full bg-amber-200"}>
-          <Nav/>
-
+         <Home/>
       </div>
   );
 }
