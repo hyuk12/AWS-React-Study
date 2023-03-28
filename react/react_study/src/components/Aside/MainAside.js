@@ -10,6 +10,8 @@ import {FcIdea} from "@react-icons/all-files/fc/FcIdea";
 import {useNavigate} from "react-router-dom";
 import {FcSearch} from "@react-icons/all-files/fc/FcSearch";
 import {FcTodoList} from "@react-icons/all-files/fc/FcTodoList";
+import {FcNumericalSorting12} from "@react-icons/all-files/fc/FcNumericalSorting12";
+
 const MainAside = () => {
     const navigate = useNavigate();
     return (
@@ -82,6 +84,18 @@ const MainAside = () => {
                                 title: 'todoList2',
                                 itemId: '/todo2',
                                 elemBefore: () => <FcTodoList />
+                            }
+                        ]
+                    },
+                    {
+                        title: 'numberCounterList',
+                        itemId: '/number',
+                        elemBefore: () => <FcNumericalSorting12 />,
+                        subNav :[
+                            {
+                                title: 'numberCounter',
+                                itemId: '/number/counter',
+                                elemBefore: () => <FcNumericalSorting12 />
                             }
                         ]
                     }

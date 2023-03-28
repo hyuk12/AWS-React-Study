@@ -11,6 +11,7 @@ import Sample from "./pages/InputSample/Sample";
 import UserList from "./pages/UserList/UserList";
 import TodoList from "./pages/TodoList/TodoList";
 import Todo from "./pages/Todo/Todo";
+import NumberCounter from "./pages/NumberCounter/NumberCounter";
 
 function Test1() {
     return (<h1>test1</h1>);
@@ -35,7 +36,7 @@ function App() {
             <Route path={"/users"} Component={UserList}></Route>
               <Route path={"/todo"} Component={TodoList}></Route>
               <Route path={"/todo2"} Component={Todo}></Route>
-
+              <Route path={"/number/counter"} Component={NumberCounter}></Route>
           </Routes>
       </>
   );
