@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react*/
 import './App.css';
-import TodoList from "./pages/TodoList/Main/TodoList";
 import React from "react";
 import {css, Global} from "@emotion/react";
 import {reset} from "./styles/Global/reset";
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import {Route, Routes} from "react-router-dom";
-import UserInfo from "./pages/TodoList/Main/UserInfo";
 import Aside from "./components/Aside/Aside";
+import TodoHome from "./components/TodoList/home/TodoHome";
+import UnifiedPage from "./pages/TodoList/Main/UnifiedPage";
 
  const Container = css`
   position: relative;
@@ -26,8 +26,9 @@ function App() {
           <div css={Container}>
               <Aside/>
               <Routes>
-                  <Route path="/todoList" Component={TodoList}/>
-                  <Route path="/UserInformation" Component={UserInfo}/>
+                  <Route path="/home"  element={<TodoHome/>}/>
+                  <Route path="/todoList" element={<UnifiedPage pageType={'todo'}/>}/>
+                  <Route path="/UserInformation" element={<UnifiedPage pageType={'userInfo'}/>}/>
               </Routes>
           </div>
 

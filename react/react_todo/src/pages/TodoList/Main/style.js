@@ -2,29 +2,20 @@ import {css} from "@emotion/react";
 
 
 
-export const MainContainer = css`
-  margin: 10px auto;
-  width: 550px;
-  height: 100%;
-`;
 
-export const MainHeader = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`;
 
-export const MainTitle = css`
-  margin: 20px 0 0 20px;
-  font-size: 36px;
-`;
+
+
+
 
 export const TodoInputContainer = css`
+  box-sizing: border-box;
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
   
-  margin: 0 0 3px;
+  margin: -40px auto 3px 150px;
   border-bottom: 1px solid #dbdbdb;
   padding: 0 50px 0 0;
   width: 70%;
@@ -97,19 +88,18 @@ export const Img = css`
 `;
 
 export const ChangeNav = css`
-  box-sizing: border-box;
   position: absolute;
-  bottom: 3px;
-  right: 3px;
+  bottom: 5px;
+  right: 5px;
   
-  display: none;
-  
-  border-radius: 5px;
-  padding: 5px;
-  
-  background-color: #121212bb;
-  color: #f0f0f0;
   font-size: 12px;
+  color: #444;
+  
+  cursor: pointer;
+  
+  &:hover {
+    color: #000;
+  }
 `;
 
 export const InfoMain = css`

@@ -1,5 +1,23 @@
 import {css} from "@emotion/react";
 
+export const MainContainer = css`
+  margin: 10px auto;
+  width: 550px;
+  height: 100%;
+`;
+
+export const MainHeader = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`;
+
+export const MainTitle = (color) => css`
+  margin: 20px 0 0 20px;
+  font-size: 36px;
+  color: ${color};
+`;
+
 export const ContentContainer = css`
   margin: 10px;
   width: 230px;

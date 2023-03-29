@@ -36,7 +36,7 @@ const Aside = () => {
                 items={[
                     {
                         title: 'Home',
-                        itemId: '/',
+                        itemId: '/home',
                         elemBefore: () => <FcHome />
                     },
                     {

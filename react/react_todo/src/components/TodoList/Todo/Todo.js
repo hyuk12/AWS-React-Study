@@ -5,7 +5,7 @@ import {FcEditImage} from "@react-icons/all-files/fc/FcEditImage";
 import {FcEmptyTrash} from "@react-icons/all-files/fc/FcEmptyTrash";
 import Button from "../../Buttons/Button";
 
-const Todo = ({ todo, OpenModal, RemoveClick }) => {
+const Todo = ({ todo, openModal, removeClick }) => {
     return (
         <li css={S.ContentContainer} >
             <div css={S.ContentHeader} >
@@ -20,8 +20,8 @@ const Todo = ({ todo, OpenModal, RemoveClick }) => {
                 {todo.content}
             </div>
             <div css={S.ContentFooter} >
-                <Button  onClick={() => OpenModal(todo.id)}><FcEditImage/></Button>
-                <Button  onClick={() => RemoveClick(todo.id)} ><FcEmptyTrash/></Button>
+                <Button  onClick={() => openModal(todo.id)}><FcEditImage/></Button>
+                <Button  onClick={() => removeClick(todo.id)} ><FcEmptyTrash/></Button>
             </div>
         </li>
     );
