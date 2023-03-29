@@ -20,7 +20,6 @@ const Aside = () => {
             ButtonRef.current = false;
         }
     }
-
     return (
         <aside  css={asideStyle} >
             {
@@ -28,6 +27,7 @@ const Aside = () => {
                     : <button css={S.MenuButton} onClick={onNavBarButtonClicked}  >◀︎</button>
             }
             <Navigation
+
                 activeItemId="/"
                 onSelect={({itemId}) => {
                     navigate(itemId);
@@ -36,7 +36,7 @@ const Aside = () => {
                 items={[
                     {
                         title: 'Home',
-                        itemId: '/home',
+                        itemId: '/',
                         elemBefore: () => <FcHome />
                     },
                     {

@@ -1,28 +1,58 @@
 /** @jsxImportSource @emotion/react*/
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {FcFile} from "@react-icons/all-files/fc/FcFile";
 import {FcPlus} from "@react-icons/all-files/fc/FcPlus";
-import Aside from "../../../components/Aside/Aside";
-import Clock from 'react-live-clock'
 import * as S from "./style";
-import {FcEditImage} from "@react-icons/all-files/fc/FcEditImage";
-import {FcEmptyTrash} from "@react-icons/all-files/fc/FcEmptyTrash";
+import Modal from "../../../components/TodoList/Modal/Modal";
+import {format} from "date-fns";
+import Todo from "../../../components/TodoList/Todo/Todo";
 
 
 const TodoList = () => {
+    const [todoList, setTodoList] = useState([]);
 
-    const today = useState(new Date());
+    const saveToLocalStorage = (items) => {
+        localStorage.setItem('todoList', JSON.stringify(items));
+    }
+
+    const getFromLocalStorage = () => {
+        const storedTodoList = localStorage.getItem('todoList');
+        return storedTodoList? JSON.parse(storedTodoList) : [];
+    };
+
+    useEffect(() => {
+        const storedTodoList = getFromLocalStorage();
+        if(storedTodoList !== undefined) {
+            setTodoList(storedTodoList);
+        } else {
+            setTodoList([]);
+        }
+
+    },[]);
+
+    const formatDate = (date, formatString) => {
+        return format(date, formatString);
+
+    };
 
     const [input, setInput] = useState({
         id: 0,
-        content: ''
-
+        content: '',
+        date: new Date(),
+        dateTime: new Date()
     });
 
+    const [modifyTodo, setModifyTodo] = useState({
+        id: 0,
+        content: '',
+        date: new Date(),
+        dateTime: new Date()
+    });
 
-    const [todoList, setTodoList] = useState([]);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [isOpened, setIsOpened] = useState(false);
+
     const todoId = useRef(1);
-
 
     const TodoInputChange = (e) => {
         setInput({
@@ -40,74 +70,91 @@ const TodoList = () => {
     const AddTodoClick = () => {
         const todo = {
             ...input,
-            id: todoId.current++
+            id: todoId.current++,
+            date: formatDate(new Date(), 'yyyy.MM.dd (E)'),
+            dateTime: formatDate(new Date(), 'HH:mm:ss'),
         }
-        setTodoList([...todoList, todo]);
+        const updatedTodoList = [...todoList, todo];
+        setTodoList(updatedTodoList);
+        setTimeout(()=> saveToLocalStorage(updatedTodoList),500 );
 
         setInput(
             {
                 id: 0,
-                content: ''
+                content: '',
+                date: new Date(),
+                dateTime: new Date()
             }
         )
     };
 
+    const RemoveClick = (id) => {
+        setIsOpened(true);
+        setDeleteModal(true)
+        setModifyTodo(
+            todoList.filter(todo => todo.id === id)[0]
+        )
+
+    }
+
+    const OpenModal = (id) => {
+        setIsOpened(true);
+        setDeleteModal(false)
+        setModifyTodo(
+            todoList.filter(todo => todo.id === id)[0]
+        )
+        console.log(modifyTodo)
+    }
+
+    const updateTodo = (todo) => {
+        const updatedTodoList = todoList.map(item => {
+            if (item.id === todo.id) {
+                item.content = todo.content;
+            }
+            return item;
+        });
+        setTodoList(updatedTodoList);
+        setTimeout(() => saveToLocalStorage(updatedTodoList),500);
+    }
+
+    const DeleteTodo = (id) => {
+        const updatedTodoList = todoList.filter(item => item.id!== id);
+        console.log(todoList)
+        setTodoList(updatedTodoList);
+        setTimeout(() => saveToLocalStorage(updatedTodoList),500);
+
+    }
+
     return (
-        <div css={S.Container}>
-            <Aside/>
-            <main css={S.MainContainer}>
-                <header css={S.MainHeader}>
-                    <h1 css={S.MainTitle}>Todo</h1>
-                    <div css={S.TodoInputContainer}>
-                        <FcFile/>
-                        <input css={S.TodoInput} type="text" onChange={TodoInputChange} onKeyUp={onKeyUp} value={input.content} placeholder={"Please Enter Todo..."}/>
-                        <button css={S.AddTodoButton} onClick={AddTodoClick} ><FcPlus/></button>
-                    </div>
-                </header>
+            <>
+                <main css={S.MainContainer}>
+                    <header css={S.MainHeader}>
+                        <h1 css={S.MainTitle}>Todo</h1>
+                        <div css={S.TodoInputContainer}>
+                            <FcFile/>
+                            <input css={S.TodoInput} type="text" onChange={TodoInputChange} onKeyUp={onKeyUp} value={input.content} placeholder={"Please Enter Todo..."}/>
+                            <button css={S.AddTodoButton} onClick={AddTodoClick} ><FcPlus/></button>
+                        </div>
+                    </header>
 
-                <ul css={S.TodoContentList}>
-                    {
-                        todoList.map(
-                            todo => {
-
-                                const RemoveClick = (id) => {
-                                    setTodoList(todoList.filter(todo => todo.id!== id))
-                                }
+                    <ul css={S.TodoContentList}>
+                        { todoList.map(todo =>
+                            {
                                 return (
-                                    <li css={S.ContentContainer} key={todo.id}>
-                                        <div css={S.ContentHeader} >
-                                            <div css={S.TodoDate} >
-                                                <Clock
-                                                    format={'YYYY.MM.DD (ddd) '}
-                                                    ticking={false}
-                                                    timezone={"KR/Pacific"}/>
-                                            </div>
-                                            <div css={S.TodoDateTime} >
-                                                <Clock
-                                                    format={"HH:mm:ss"}
-                                                    ticking={false}
-                                                    timezone={"KR/Pacific"}/>
-                                            </div>
-                                        </div>
-                                        <div css={S.ContentMain} >
-                                            {todo.content}
-                                        </div>
-                                        <div css={S.ContentFooter} >
-                                            <button css={S.ModifyButton} onClick={null}>
-                                                <FcEditImage/>
-                                            </button>
-                                            <button css={S.RemoveButton} onClick={() => RemoveClick(todo.id)} >
-                                               <FcEmptyTrash/>
-                                            </button>
-                                        </div>
-                                    </li>
+                                    <div key={todo.id}>
+                                        <Todo todo={todo} OpenModal={OpenModal} RemoveClick={RemoveClick}/>
+                                    </div>
                                 )
-                            }
-                        )
-                    }
-                </ul>
-            </main>
-        </div>
+                            })}
+                    </ul>
+                </main>
+                {
+                    isOpened ? <Modal setIsOpen={setIsOpened} deleteModal={deleteModal} todo={modifyTodo} updateTodo={updateTodo} deleteTodo={DeleteTodo}/> : ''
+                }
+
+            </>
+
+
     );
 };
 
