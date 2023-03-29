@@ -2,6 +2,8 @@
 import React from 'react';
 import * as S from "./style";
 import {css} from "@emotion/react";
+import logo from "../../../images/noimage-760x460.png";
+
 
 const TodoButton = css`
   border: none;
@@ -19,7 +21,7 @@ const UserInfo = () => {
                     <form>
                         <input css={S.PhotoFile} type="file" name="file"/>
                     </form>
-                    <img css={S.Img} src="../../../../public/img/noimage-760x460.png" alt={"noimage-760x460"}/>
+                    <img css={S.Img} src={logo} alt={"noimage-760x460"}/>
                     <div css={S.ChangeNav}>
                         클릭하여 이미지 변경
                     </div>

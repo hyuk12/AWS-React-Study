@@ -51,7 +51,6 @@ const TodoList = () => {
 
     const [deleteModal, setDeleteModal] = useState(false);
     const [isOpened, setIsOpened] = useState(false);
-
     const todoId = useRef(1);
 
     const TodoInputChange = (e) => {

@@ -97,6 +97,7 @@ export const Img = css`
 `;
 
 export const ChangeNav = css`
+  box-sizing: border-box;
   position: absolute;
   bottom: 3px;
   right: 3px;
