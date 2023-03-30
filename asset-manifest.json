@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/AWS-React-Study/static/css/main.5365d27e.css",
-    "main.js": "/AWS-React-Study/static/js/main.dd777c9d.js",
+    "main.js": "/AWS-React-Study/static/js/main.e56d1f5b.js",
     "static/js/787.06469d7b.chunk.js": "/AWS-React-Study/static/js/787.06469d7b.chunk.js",
     "static/media/newjeans-hanni-omg-mv-shoot-wallpaper-3840x2160_54.jpg": "/AWS-React-Study/static/media/newjeans-hanni-omg-mv-shoot-wallpaper-3840x2160_54.529806c7f3abdcffa3d7.jpg",
     "index.html": "/AWS-React-Study/index.html",
     "main.5365d27e.css.map": "/AWS-React-Study/static/css/main.5365d27e.css.map",
-    "main.dd777c9d.js.map": "/AWS-React-Study/static/js/main.dd777c9d.js.map",
+    "main.e56d1f5b.js.map": "/AWS-React-Study/static/js/main.e56d1f5b.js.map",
     "787.06469d7b.chunk.js.map": "/AWS-React-Study/static/js/787.06469d7b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5365d27e.css",
-    "static/js/main.dd777c9d.js"
+    "static/js/main.e56d1f5b.js"
   ]
 }
