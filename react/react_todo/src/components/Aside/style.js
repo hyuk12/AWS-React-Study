@@ -7,7 +7,7 @@ export const style = css`
 
   width: 300px;
   height: 100%;
-  background-color: rgba(236, 226, 223, 0.96);
+  background-color: rgba(237, 234, 234, 0.96);
   box-shadow: 1px 0 5px 1px black;
   transition: left 1s ease;
 `;
@@ -20,7 +20,7 @@ export const HiddenMenu = css`
 
   width: 300px;
   height: 100%;
-  background-color: rgba(236, 226, 223, 0.96);
+  background-color: rgba(237, 234, 234, 0.96);
   box-shadow: 1px 0 5px 1px black;
   transition: left 1s ease;
 `;

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react*/
 import React from 'react';
-import * as S from './style';
+import * as S from '../style';
 
 const MainTitle = ({ title , color }) => {
     return (

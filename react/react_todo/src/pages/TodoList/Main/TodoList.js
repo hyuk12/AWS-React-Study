@@ -6,6 +6,7 @@ import {FcPlus} from "@react-icons/all-files/fc/FcPlus";
 import Todo from "../../../components/TodoList/Todo/Todo";
 import Modal from "../../../components/TodoList/Modal/Modal";
 import {format} from "date-fns";
+import {motion} from "framer-motion";
 
 const TodoList = () => {
     const [todoList, setTodoList] = useState([]);
@@ -65,22 +66,27 @@ const TodoList = () => {
 
     return (
         <>
-            <div css={S.TodoInputContainer}>
-                <FcFile />
-                <input css={S.TodoInput} type="text" onChange={onInputChange} onKeyUp={onKeyUp} value={input.content} placeholder="Please Enter Todo..." />
-                <button css={S.AddTodoButton} onClick={addTodo}>
-                    <FcPlus />
-                </button>
-            </div>
-            <ul css={S.TodoContentList}>
-                {todoList.map(todo => (
-                    <div key={todo.id}>
-                        <Todo todo={todo} openModal={openModal} removeClick={removeClick} />
-                    </div>
-                ))}
-            </ul>
-            {isOpened && <Modal  setIsOpen={setIsOpened} deleteModal={deleteModal} todo={modifyTodo} updateTodo={updateTodo} deleteTodo={deleteTodo} />}
-
+            <motion.div
+                initial={{ x: 300 }}
+                animate={{ x:0, opacity: 1 }}
+                exit={{ x: -300 }}
+                transition={{ duration: 1.5 }} >
+                <div css={S.TodoInputContainer}>
+                    <FcFile />
+                    <input css={S.TodoInput} type="text" onChange={onInputChange} onKeyUp={onKeyUp} value={input.content} placeholder="Please Enter Todo..." />
+                    <button css={S.AddTodoButton} onClick={addTodo}>
+                        <FcPlus />
+                    </button>
+                </div >
+                <ul css={S.TodoContentList}>
+                    {todoList.map((todo, index) => (
+                        <div key={index}>
+                            <Todo todo={todo} openModal={openModal} removeClick={removeClick} />
+                        </div>
+                    ))}
+                </ul>
+                {isOpened && <Modal  setIsOpen={setIsOpened} deleteModal={deleteModal} todo={modifyTodo} updateTodo={updateTodo} deleteTodo={deleteTodo} />}
+            </motion.div>
         </>
     );
 };

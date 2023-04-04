@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import MainContainer from "../../../components/TodoList/Todo/MainContainer";
-import MainHeader from "../../../components/TodoList/Todo/MainHeader";
-import MainTitle from "../../../components/TodoList/Todo/MainTitle";
+import MainContainer from "../../../components/TodoList/Todo/TodoPart/MainContainer";
+import MainHeader from "../../../components/TodoList/Todo/TodoPart/MainHeader";
+import MainTitle from "../../../components/TodoList/Todo/TodoPart/MainTitle";
 import TodoList from "./TodoList";
 import UserInfo from "./UserInfo";
 

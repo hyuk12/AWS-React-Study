@@ -7,6 +7,8 @@ import * as S from "./style";
 import {FcInfo} from "@react-icons/all-files/fc/FcInfo";
 import {FcHome} from "@react-icons/all-files/fc/FcHome";
 
+
+
 const Aside = () => {
     const navigate = useNavigate();
     const [asideStyle, setAsideStyle] = useState(S.HiddenMenu);
@@ -20,38 +22,41 @@ const Aside = () => {
             ButtonRef.current = false;
         }
     }
+
     return (
         <aside  css={asideStyle} >
             {
                 ButtonRef.current ? <button css={S.MenuButton} onClick={onNavBarButtonClicked}  >▶︎</button>
                     : <button css={S.MenuButton} onClick={onNavBarButtonClicked}  >◀︎</button>
             }
-            <Navigation
 
-                activeItemId="/"
-                onSelect={({itemId}) => {
-                    navigate(itemId);
-                    onNavBarButtonClicked()
-                }}
-                items={[
-                    {
-                        title: 'Home',
-                        itemId: '/home',
-                        elemBefore: () => <FcHome />
-                    },
-                    {
-                        title: 'UserInformation',
-                        itemId: '/UserInformation',
-                        elemBefore: () => <FcInfo />
-                    },
-                    {
-                        title: 'TodoList',
-                        itemId: '/todoList',
-                        elemBefore: () => <FcTodoList />
-                    }
+                <Navigation
+
+                    activeItemId="/"
+                    onSelect={({itemId}) => {
+                        navigate(itemId, {replace: true});
+                        onNavBarButtonClicked();
+                    }}
+                    items={[
+                        {
+                            title: 'Home',
+                            itemId: '/AWS-React-Study',
+                            elemBefore: () => <FcHome />
+                        },
+                        {
+                            title: 'UserInformation',
+                            itemId: '/UserInformation',
+                            elemBefore: () => <FcInfo />
+                        },
+                        {
+                            title: 'TodoList',
+                            itemId: '/todoList',
+                            elemBefore: () => <FcTodoList />
+                        }
                     ]}
-               />
-        </aside>
+                />
+            </aside>
+
     );
 };
 
